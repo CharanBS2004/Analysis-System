@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Result Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Excel Result Analyzer</h1>
+            <p>Upload your Excel file to analyze student results and generate comprehensive reports</p>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>📊 File Upload & Configuration</h2>
+            </div>
+            <div class="card-content">
+                <div class="form-group">
+                    <label for="file-upload">Select Excel File</label>
+                    <input type="file" id="file-upload" accept=".xlsx,.xls" class="file-input">
+                    <div id="file-status" class="file-status"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="initial-usl">Initial USL Number</label>
+                    <input type="number" id="initial-usl" min="1" max="99999" value="1" class="number-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Analysis</h2>
+            </div>
+            <div class="card-content">
+                <button id="analyze-btn" class="analyze-btn" disabled>
+                    <span id="btn-text">📊 Analyze Excel File</span>
+                    <div id="loading-spinner" class="spinner hidden"></div>
+                </button>
+
+                <div id="success-message" class="success-message hidden">
+                    <div class="success-content">
+                        <span class="success-icon">✅</span>
+                        <div>
+                            <h3>Analysis Complete!</h3>
+                            <p>Your analyzed Excel file has been downloaded automatically.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="error-message" class="error-message hidden">
+                    <div class="error-content">
+                        <span class="error-icon">❌</span>
+                        <div>
+                            <h3>Analysis Failed</h3>
+                            <p id="error-text">An error occurred during analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>This tool processes Excel files entirely in your browser. No data is sent to any server.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
